@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/kube.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>PokeMap Yolo</title>
+  </head>
+  <body>
+    <nav class="navbar fullwidth navbar-black" data-tools="navigation-fixed">
+      <ul>
+          <li ><a href="#">PokeMap :3</a></li>
+
+      </ul>
+    </nav>
+    <div class="units-row">
+      <div class="unit-centered unit-40"><button class="btn btn-red" onclick="document.getElementById('audio').pause()">Detener música</button></div>
+    </div>
+      
+    <div class="units-row end">
+      <div class="unit-centered unit-90">
+        <div id="map"></div>
+      </div>
+    </div>
+    <audio id="audio" preload="auto" autoplay loop hidden>
+      <source src="http://216.227.134.162/ost/pokemon-original-game-soundtrack/tmlaxizceu/101-opening.mp3" type="audio/mpeg">
+    </audio>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+    <script src="js/kube.min.js"></script>
+    <script type="text/javascript" src="js/map.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&libraries=geometry" async defer>
+    </script>
+  </body>
+</html>
