@@ -1,0 +1,24 @@
+{
+  "name": "pokemaps",
+  "version": "0.0.1",
+  "description": "Es un juego para recorrer el mundo usando Google Maps y capturar pokemons",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dezkareid/PokeMap.git"
+  },
+  "keywords": [
+    "pokemon",
+    "google",
+    "maps"
+  ],
+  "author": "Dezka Reid",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dezkareid/PokeMap/issues"
+  },
+  "homepage": "https://github.com/dezkareid/PokeMap#readme"
+}
