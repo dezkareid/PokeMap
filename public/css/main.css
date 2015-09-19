@@ -1,0 +1,20 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+        
+#map {
+  width: 100%;
+  height: 500px;
+}
+
+.navbar-black{
+  padding: 30px 50px 28px;
+  color: #fff;
+  background: #000;
+}
+        
+.navbar-black li a{
+  color: #fff;
+}
