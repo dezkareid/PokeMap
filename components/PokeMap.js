@@ -35,7 +35,7 @@ export default class PokeMap extends React.Component{
 
   addRedControl () {
     let redControl = document.createElement('img');
-    redControl.src = 'img/trainer.png';
+    redControl.src = 'public/img/trainer.png';
     redControl.index = 1;
     this.props.map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(redControl);
   }
@@ -50,7 +50,7 @@ export default class PokeMap extends React.Component{
     }
     for (var i = 0; i < limit; i++) {
       pokeMarker = this.props.myMap.addMarker(this.props.pokemons[i].position.lat,this.props.pokemons[i].position.lng, this.props.pokemons[i].name);
-      pokeMarker.setIcon("img/"+(i+1)+".png");
+      pokeMarker.setIcon("public/img/"+(i+1)+".png");
       pokeMarker.active = true;
       pokeMarker.addEvent('click',clickPokemon);
       this.props.pokeMarkers.push(pokeMarker);
