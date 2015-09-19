@@ -1,0 +1,12 @@
+node_modules
+bower_components
+.tmp
+dump.rdb
+lib-cov
+*.seed
+*.log
+*.out
+*.pid
+npm-debug.log
+.DS_STORE
+.node_history
