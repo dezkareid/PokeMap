@@ -8,7 +8,7 @@ export default class PokeDex extends React.Component{
 			<ul  id="pokedex">
       {
         this.props.pokemons.map((pokemon) => {
-          return <PokeRecord name={pokemon.name}/>
+          return <PokeRecord pokemon={ pokemon }/>
         })
       }
     	</ul>
