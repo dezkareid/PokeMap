@@ -4,7 +4,10 @@ html, body {
   padding: 0;
 }
 
-      
+#pokedex{
+	list-style-type: none;
+}  
+ 
 #pokemap {
   height: 500px;
 }
