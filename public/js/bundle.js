@@ -52,17 +52,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _componentsPokeMap = __webpack_require__(157);
+	var _componentsPokeGame = __webpack_require__(157);
 
-	var _componentsPokeMap2 = _interopRequireDefault(_componentsPokeMap);
+	var _componentsPokeGame2 = _interopRequireDefault(_componentsPokeGame);
 
-	var pokemons = [{ name: "Bulbasaur", position: { lat: 19.541980, lng: -96.927581 } }, { name: "Yvisaur", position: { lat: 20.223488, lng: -97.956551 } }, { name: "Venusaur", position: { lat: 21.088393, lng: -98.713452 } }, { name: "Charmander", position: { lat: 22.288521, lng: -100.669963 } }, { name: "Charmeleon", position: { lat: 24.072572, lng: -100.636729 } }, { name: "Charizard", position: { lat: 25.657715, lng: -100.366785 } }, { name: "Squirtle", position: { lat: 19.444299, lng: -96.189209 } }, { name: "Warturtle", position: { lat: 19.703085, lng: -96.255126 } }, { name: "Blastoise", position: { lat: 19.081306, lng: -95.826660 } }];
-
-	main();
-
-	function main() {
-	  _react2['default'].render(_react2['default'].createElement(_componentsPokeMap2['default'], { pokemons: pokemons }), document.getElementById('container-map'));
-	}
+	_react2['default'].render(_react2['default'].createElement(_componentsPokeGame2['default'], null), document.getElementById('container-map'));
 
 /***/ },
 /* 1 */
@@ -20447,6 +20441,198 @@
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
+		value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _PokeMap = __webpack_require__(158);
+
+	var _PokeMap2 = _interopRequireDefault(_PokeMap);
+
+	var _PokeDex = __webpack_require__(159);
+
+	var _PokeDex2 = _interopRequireDefault(_PokeDex);
+
+	var PokeGame = (function (_React$Component) {
+		_inherits(PokeGame, _React$Component);
+
+		function PokeGame(props) {
+			_classCallCheck(this, PokeGame);
+
+			_get(Object.getPrototypeOf(PokeGame.prototype), 'constructor', this).call(this, props);
+			this.state = { pokemons: [] };
+			this.catchThem = this.catchThem.bind(this);
+		}
+
+		_createClass(PokeGame, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				this.props.wilds = [{ name: "Bulbasaur", position: { lat: 19.541980, lng: -96.927581 } }, { name: "Yvisaur", position: { lat: 20.223488, lng: -97.956551 } }, { name: "Venusaur", position: { lat: 21.088393, lng: -98.713452 } }, { name: "Charmander", position: { lat: 22.288521, lng: -100.669963 } }, { name: "Charmeleon", position: { lat: 24.072572, lng: -100.636729 } }, { name: "Charizard", position: { lat: 25.657715, lng: -100.366785 } }, { name: "Squirtle", position: { lat: 19.444299, lng: -96.189209 } }, { name: "Warturtle", position: { lat: 19.703085, lng: -96.255126 } }, { name: "Blastoise", position: { lat: 19.081306, lng: -95.826660 } }];
+			}
+		}, {
+			key: 'catchThem',
+			value: function catchThem(pokemon) {
+				this.state.pokemons.push(pokemon);
+				var pokemons = this.state.pokemons;
+				this.setState({ pokemons: pokemons });
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return _react2['default'].createElement(
+					'div',
+					{ className: 'pokegame' },
+					_react2['default'].createElement(_PokeMap2['default'], { pokemons: this.state.pokemons, wilds: this.props.wilds, catchThem: this.catchThem }),
+					_react2['default'].createElement(_PokeDex2['default'], { pokemons: this.state.pokemons })
+				);
+			}
+		}]);
+
+		return PokeGame;
+	})(_react2['default'].Component);
+
+	exports['default'] = PokeGame;
+	module.exports = exports['default'];
+
+/***/ },
+/* 158 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var PokeMap = (function (_React$Component) {
+	  _inherits(PokeMap, _React$Component);
+
+	  function PokeMap(props) {
+	    _classCallCheck(this, PokeMap);
+
+	    _get(Object.getPrototypeOf(PokeMap.prototype), "constructor", this).call(this, props);
+	    this.props.myMap = {};
+	    this.props.map = {};
+	    this.props.redControl = {};
+	    this.props.pokeMarkers = [];
+	    this.props.showMarkers = {};
+	  }
+
+	  _createClass(PokeMap, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2["default"].createElement("div", { className: "unit-70", id: "pokemap" });
+	    }
+	  }, {
+	    key: "initMap",
+	    value: function initMap() {
+	      this.props.map = this.props.myMap.getMap();
+
+	      this.props.map.setZoom(4);
+	      this.props.myMap.removeControls();
+
+	      this.createPokemons();
+
+	      this.props.myMap.addEvent('bounds_changed', this.showMarkers());
+
+	      this.addRedControl();
+
+	      this.props.myMap.setMapStyle("APPLE");
+	    }
+	  }, {
+	    key: "addRedControl",
+	    value: function addRedControl() {
+	      var redControl = document.createElement('img');
+	      redControl.src = 'public/img/trainer.png';
+	      redControl.index = 1;
+	      this.props.map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(redControl);
+	    }
+	  }, {
+	    key: "createPokemons",
+	    value: function createPokemons() {
+	      var pokeMarker = undefined;
+	      var limit = this.props.wilds.length;
+	      var _this = this;
+	      for (var i = 0; i < limit; i++) {
+	        pokeMarker = this.props.myMap.addMarker(this.props.wilds[i].position.lat, this.props.wilds[i].position.lng, this.props.wilds[i].name);
+	        pokeMarker.setIcon("public/img/" + (i + 1) + ".png");
+	        pokeMarker.indexPokemon = i;
+	        pokeMarker.setVisible(false);
+	        pokeMarker.active = true;
+	        pokeMarker.addListener('click', function () {
+	          this.active = false;
+	          this.setVisible(false);
+	          _this.props.catchThem(_this.props.wilds[this.indexPokemon]);
+	          alert("Capturaste a " + this.getTitle());
+	        });
+
+	        this.props.pokeMarkers.push(pokeMarker);
+	      }
+	    }
+	  }, {
+	    key: "showMarkers",
+	    value: function showMarkers() {
+	      var limit = this.props.wilds.length;
+	      var pokeMarkers = this.props.pokeMarkers;
+	      return function () {
+	        var mostrar = map.getZoom() > 7;
+	        for (var i = 0; i < limit; i++) {
+	          if (map.getBounds().contains(pokeMarkers[i].getPosition())) {
+	            if (pokeMarkers[i].active) {
+	              pokeMarkers[i].setVisible(mostrar);
+	            }
+	          }
+	        }
+	      };
+	    }
+	  }, {
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      this.props.myMap = new DMaps(18.157838, -95.187389, 'pokemap');
+	      this.initMap();
+	    }
+	  }]);
+
+	  return PokeMap;
+	})(_react2["default"].Component);
+
+	exports["default"] = PokeMap;
+	module.exports = exports["default"];
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
 
@@ -20464,96 +20650,90 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var PokeMap = (function (_React$Component) {
-	  _inherits(PokeMap, _React$Component);
+	var _PokeRecord = __webpack_require__(160);
 
-	  function PokeMap(props) {
-	    _classCallCheck(this, PokeMap);
+	var _PokeRecord2 = _interopRequireDefault(_PokeRecord);
 
-	    _get(Object.getPrototypeOf(PokeMap.prototype), 'constructor', this).call(this, props);
-	    this.props.myMap = {};
-	    this.props.map = {};
-	    this.props.redControl = {};
-	    this.props.pokeMarkers = [];
-	    this.props.showMarkers = {};
-	    this.props.pokemons = props.pokemons;
+	var PokeDex = (function (_React$Component) {
+	  _inherits(PokeDex, _React$Component);
+
+	  function PokeDex() {
+	    _classCallCheck(this, PokeDex);
+
+	    _get(Object.getPrototypeOf(PokeDex.prototype), 'constructor', this).apply(this, arguments);
 	  }
 
-	  _createClass(PokeMap, [{
+	  _createClass(PokeDex, [{
 	    key: 'render',
 	    value: function render() {
-	      return _react2['default'].createElement('div', { id: 'map' });
-	    }
-	  }, {
-	    key: 'initMap',
-	    value: function initMap() {
-	      this.props.map = this.props.myMap.getMap();
-
-	      this.props.map.setZoom(4);
-	      this.props.myMap.removeControls();
-
-	      this.createPokemons();
-
-	      this.props.myMap.addEvent('bounds_changed', this.showMarkers());
-
-	      this.addRedControl();
-
-	      this.props.myMap.setMapStyle("APPLE");
-	    }
-	  }, {
-	    key: 'addRedControl',
-	    value: function addRedControl() {
-	      var redControl = document.createElement('img');
-	      redControl.src = 'img/trainer.png';
-	      redControl.index = 1;
-	      this.props.map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(redControl);
-	    }
-	  }, {
-	    key: 'createPokemons',
-	    value: function createPokemons() {
-	      var pokeMarker = undefined;
-	      var limit = this.props.pokemons.length;
-	      var clickPokemon = function clickPokemon() {
-	        alert('Atrapaste a un ' + this.getTitle());
-	        this.active = false;
-	        this.setVisible(false);
-	      };
-	      for (var i = 0; i < limit; i++) {
-	        pokeMarker = this.props.myMap.addMarker(this.props.pokemons[i].position.lat, this.props.pokemons[i].position.lng, this.props.pokemons[i].name);
-	        pokeMarker.setIcon("img/" + (i + 1) + ".png");
-	        pokeMarker.active = true;
-	        pokeMarker.addEvent('click', clickPokemon);
-	        this.props.pokeMarkers.push(pokeMarker);
-	      }
-	    }
-	  }, {
-	    key: 'showMarkers',
-	    value: function showMarkers() {
-	      var limit = this.props.pokemons.length;
-	      var pokeMarkers = this.props.pokeMarkers;
-	      return function () {
-	        var mostrar = map.getZoom() > 7;
-	        for (var i = 0; i < limit; i++) {
-	          if (map.getBounds().contains(pokeMarkers[i].getPosition())) {
-	            if (pokeMarkers[i].active) {
-	              pokeMarkers[i].setVisible(mostrar);
-	            }
-	          }
-	        }
-	      };
-	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.props.myMap = new DMaps(18.157838, -95.187389, 'map');
-	      this.initMap();
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'unit-30' },
+	        _react2['default'].createElement(
+	          'ul',
+	          { id: 'pokedex' },
+	          this.props.pokemons.map(function (pokemon) {
+	            return _react2['default'].createElement(_PokeRecord2['default'], { name: pokemon.name });
+	          })
+	        )
+	      );
 	    }
 	  }]);
 
-	  return PokeMap;
+	  return PokeDex;
 	})(_react2['default'].Component);
 
-	exports['default'] = PokeMap;
+	exports['default'] = PokeDex;
+	module.exports = exports['default'];
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var PokeRecord = (function (_React$Component) {
+	  _inherits(PokeRecord, _React$Component);
+
+	  function PokeRecord() {
+	    _classCallCheck(this, PokeRecord);
+
+	    _get(Object.getPrototypeOf(PokeRecord.prototype), 'constructor', this).apply(this, arguments);
+	  }
+
+	  _createClass(PokeRecord, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'li',
+	        null,
+	        this.props.name
+	      );
+	    }
+	  }]);
+
+	  return PokeRecord;
+	})(_react2['default'].Component);
+
+	exports['default'] = PokeRecord;
 	module.exports = exports['default'];
 
 /***/ }
