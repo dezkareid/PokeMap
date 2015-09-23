@@ -7,31 +7,27 @@ export default class PokeMap extends React.Component{
     this.props.map = {};
     this.props.redControl = {};
     this.props.pokeMarkers = [];
-    this.props.showMarkers = {};
-    this.props.pokemons = props.pokemons;
+    this.props.showMarkers = {}; 
   }
 
   render(){
-    return (
-      <div id="map">
-      </div>
-    );
+    return <div className="unit-70" id="pokemap"></div>
   }
 
   initMap() {
     this.props.map = this.props.myMap.getMap();
-    
-  this.props.map.setZoom(4);
-  this.props.myMap.removeControls()
+      
+    this.props.map.setZoom(4);
+    this.props.myMap.removeControls()
 
-  this.createPokemons();
+    this.createPokemons();
 
-  this.props.myMap.addEvent('bounds_changed', this.showMarkers());
+    this.props.myMap.addEvent('bounds_changed', this.showMarkers());
 
-  this.addRedControl();
+    this.addRedControl();
 
-  this.props.myMap.setMapStyle("APPLE");
-}
+    this.props.myMap.setMapStyle("APPLE");
+  }
 
   addRedControl () {
     let redControl = document.createElement('img');
@@ -42,23 +38,27 @@ export default class PokeMap extends React.Component{
 
   createPokemons () {
     let pokeMarker;
-    let limit = this.props.pokemons.length;
-    let clickPokemon = function () {
-      alert('Atrapaste a un '+this.getTitle());
-      this.active = false;
-      this.setVisible(false);
-    }
+    let limit = this.props.wilds.length;
+    let _this = this;
     for (var i = 0; i < limit; i++) {
-      pokeMarker = this.props.myMap.addMarker(this.props.pokemons[i].position.lat,this.props.pokemons[i].position.lng, this.props.pokemons[i].name);
+      pokeMarker = this.props.myMap.addMarker(this.props.wilds[i].position.lat,this.props.wilds[i].position.lng, this.props.wilds[i].name);
       pokeMarker.setIcon("public/img/"+(i+1)+".png");
+      pokeMarker.indexPokemon = i;
+      pokeMarker.setVisible(false);
       pokeMarker.active = true;
-      pokeMarker.addEvent('click',clickPokemon);
+      pokeMarker.addListener('click',function () {
+        this.active = false;
+        this.setVisible(false);
+        _this.props.catchThem(_this.props.wilds[this.indexPokemon]);
+        alert("Capturaste a "+this.getTitle());
+      });
+
       this.props.pokeMarkers.push(pokeMarker);
     }
   }
 
   showMarkers () {
-    let limit = this.props.pokemons.length;
+    let limit = this.props.wilds.length;
     let pokeMarkers = this.props.pokeMarkers;
     return function () {
       let mostrar = map.getZoom() > 7;
@@ -74,7 +74,7 @@ export default class PokeMap extends React.Component{
   }
 
   componentDidMount(){
-    this.props.myMap = new DMaps(18.157838, -95.187389,'map');
+    this.props.myMap = new DMaps(18.157838, -95.187389,'pokemap');
     this.initMap();
   }
 }
