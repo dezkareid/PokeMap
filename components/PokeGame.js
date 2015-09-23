@@ -11,15 +11,15 @@ export default class PokeGame extends React.Component{
 
 	componentWillMount(){
 		this.props.wilds = [
-			{ name: "Bulbasaur", position: {lat: 19.541980, lng: -96.927581} },
-		  { name: "Yvisaur", position: {lat: 20.223488, lng: -97.956551} },
-		  { name: "Venusaur", position: {lat: 21.088393, lng: -98.713452} },
-		  { name: "Charmander", position: {lat: 22.288521, lng: -100.669963} },
-		  { name: "Charmeleon", position: {lat: 24.072572, lng: -100.636729} },
-		  { name: "Charizard", position: {lat: 25.657715,  lng: -100.366785} },
-		  { name: "Squirtle", position: {lat: 19.444299, lng: -96.189209} },
-		  { name: "Warturtle", position: {lat: 19.703085, lng: -96.255126} },
-		  { name: "Blastoise", position: {lat: 19.081306, lng: -95.826660} }
+			{ id: 1, name: "Bulbasaur", position: {lat: 19.541980, lng: -96.927581} },
+		  { id: 2, name: "Yvisaur", position: {lat: 20.223488, lng: -97.956551} },
+		  { id: 3, name: "Venusaur", position: {lat: 21.088393, lng: -98.713452} },
+		  { id: 4, name: "Charmander", position: {lat: 22.288521, lng: -100.669963} },
+		  { id: 5, name: "Charmeleon", position: {lat: 24.072572, lng: -100.636729} },
+		  { id: 6, name: "Charizard", position: {lat: 25.657715,  lng: -100.366785} },
+		  { id: 7, name: "Squirtle", position: {lat: 19.444299, lng: -96.189209} },
+		  { id: 8, name: "Warturtle", position: {lat: 19.703085, lng: -96.255126} },
+		  { id: 9, name: "Blastoise", position: {lat: 19.081306, lng: -95.826660} }
 		];
 	}
 
