@@ -40,9 +40,10 @@ export default class PokeMap extends React.Component{
     let pokeMarker;
     let limit = this.props.wilds.length;
     let _this = this;
+    let wilds = this.props.wilds;
     for (var i = 0; i < limit; i++) {
-      pokeMarker = this.props.myMap.addMarker(this.props.wilds[i].position.lat,this.props.wilds[i].position.lng, this.props.wilds[i].name);
-      pokeMarker.setIcon("public/img/"+(i+1)+".png");
+      pokeMarker = this.props.myMap.addMarker(wilds[i].position.lat,wilds[i].position.lng, wilds[i].name);
+      pokeMarker.setIcon("public/img/"+wilds[i].id+".png");
       pokeMarker.indexPokemon = i;
       pokeMarker.setVisible(false);
       pokeMarker.active = true;
