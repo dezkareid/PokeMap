@@ -20480,7 +20480,7 @@
 		_createClass(PokeGame, [{
 			key: 'componentWillMount',
 			value: function componentWillMount() {
-				this.props.wilds = [{ name: "Bulbasaur", position: { lat: 19.541980, lng: -96.927581 } }, { name: "Yvisaur", position: { lat: 20.223488, lng: -97.956551 } }, { name: "Venusaur", position: { lat: 21.088393, lng: -98.713452 } }, { name: "Charmander", position: { lat: 22.288521, lng: -100.669963 } }, { name: "Charmeleon", position: { lat: 24.072572, lng: -100.636729 } }, { name: "Charizard", position: { lat: 25.657715, lng: -100.366785 } }, { name: "Squirtle", position: { lat: 19.444299, lng: -96.189209 } }, { name: "Warturtle", position: { lat: 19.703085, lng: -96.255126 } }, { name: "Blastoise", position: { lat: 19.081306, lng: -95.826660 } }];
+				this.props.wilds = [{ id: 1, name: "Bulbasaur", position: { lat: 19.541980, lng: -96.927581 } }, { id: 2, name: "Yvisaur", position: { lat: 20.223488, lng: -97.956551 } }, { id: 3, name: "Venusaur", position: { lat: 21.088393, lng: -98.713452 } }, { id: 4, name: "Charmander", position: { lat: 22.288521, lng: -100.669963 } }, { id: 5, name: "Charmeleon", position: { lat: 24.072572, lng: -100.636729 } }, { id: 6, name: "Charizard", position: { lat: 25.657715, lng: -100.366785 } }, { id: 7, name: "Squirtle", position: { lat: 19.444299, lng: -96.189209 } }, { id: 8, name: "Warturtle", position: { lat: 19.703085, lng: -96.255126 } }, { id: 9, name: "Blastoise", position: { lat: 19.081306, lng: -95.826660 } }];
 			}
 		}, {
 			key: 'catchThem',
@@ -20580,9 +20580,10 @@
 	      var pokeMarker = undefined;
 	      var limit = this.props.wilds.length;
 	      var _this = this;
+	      var wilds = this.props.wilds;
 	      for (var i = 0; i < limit; i++) {
-	        pokeMarker = this.props.myMap.addMarker(this.props.wilds[i].position.lat, this.props.wilds[i].position.lng, this.props.wilds[i].name);
-	        pokeMarker.setIcon("public/img/" + (i + 1) + ".png");
+	        pokeMarker = this.props.myMap.addMarker(wilds[i].position.lat, wilds[i].position.lng, wilds[i].name);
+	        pokeMarker.setIcon("public/img/" + wilds[i].id + ".png");
 	        pokeMarker.indexPokemon = i;
 	        pokeMarker.setVisible(false);
 	        pokeMarker.active = true;
@@ -20673,7 +20674,7 @@
 	          'ul',
 	          { id: 'pokedex' },
 	          this.props.pokemons.map(function (pokemon) {
-	            return _react2['default'].createElement(_PokeRecord2['default'], { name: pokemon.name });
+	            return _react2['default'].createElement(_PokeRecord2['default'], { pokemon: pokemon });
 	          })
 	        )
 	      );
@@ -20690,21 +20691,21 @@
 /* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
-	Object.defineProperty(exports, '__esModule', {
+	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var _react = __webpack_require__(1);
 
@@ -20716,25 +20717,31 @@
 	  function PokeRecord() {
 	    _classCallCheck(this, PokeRecord);
 
-	    _get(Object.getPrototypeOf(PokeRecord.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(PokeRecord.prototype), "constructor", this).apply(this, arguments);
 	  }
 
 	  _createClass(PokeRecord, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
-	      return _react2['default'].createElement(
-	        'li',
+	      var url = "public/img/" + this.props.pokemon.id + ".png";
+	      return _react2["default"].createElement(
+	        "li",
 	        null,
-	        this.props.name
+	        _react2["default"].createElement("img", { src: url }),
+	        _react2["default"].createElement(
+	          "label",
+	          null,
+	          this.props.pokemon.name
+	        )
 	      );
 	    }
 	  }]);
 
 	  return PokeRecord;
-	})(_react2['default'].Component);
+	})(_react2["default"].Component);
 
-	exports['default'] = PokeRecord;
-	module.exports = exports['default'];
+	exports["default"] = PokeRecord;
+	module.exports = exports["default"];
 
 /***/ }
 /******/ ]);
